@@ -1,1 +1,16 @@
+import requests
 
+server = "https://thingsboard.cloud"
+device_id = "f7613490-3a55-11f1-b174-255c03e1b993"
+api_key = "tb_ssuCTkwadznKusJBmoNebAxt2fRS_oeLWSeuqA0Wn5m4EJeWh1X1dxdUBPLL2Iebn-qTFCOk59zlXzKCfzq6dg"
+
+url = f"{server}/api/plugins/telemetry/DEVICE/{device_id}/values/timeseries"
+
+headers = {
+    "X-Authorization": f"ApiKey {api_key}"
+}
+
+response = requests.get(url, headers=headers)
+
+print("Status:", response.status_code)
+print("Data Telemetry:", response.text)
